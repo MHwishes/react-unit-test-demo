@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types'
 import {toggleTodo} from "../actions";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 
 class Todo extends Component {
     render() {
