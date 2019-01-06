@@ -1,12 +1,9 @@
-import { VisibilityFilters } from '../actions'
+import {SET_VISIBILITY_FILTER} from '../actions'
+import {visibilityFilters} from '../constant/constants'
+import {createReducer} from '../utils/index'
 
-const visibilityFilter = (state = VisibilityFilters.SHOW_ALL, action) => {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter;
-    default:
-      return state
-  }
-};
-
-export default visibilityFilter
+export default createReducer(visibilityFilters.SHOW_ALL, {
+    [SET_VISIBILITY_FILTER]: function (state, action) {
+        return action.payload;
+    }
+});

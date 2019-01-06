@@ -1,23 +1,24 @@
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ];
-    case 'TOGGLE_TODO':
-      return state.map(todo =>
-        (todo.id === action.id)
-          ? {...todo, completed: !todo.completed}
-          : todo
-      );
-    default:
-      return state
-  }
-};
+import {ADD_TODO, TOGGLE_TODO} from '../actions'
+import {assign} from 'lodash';
+import {createReducer} from '../utils/index'
 
-export default todos
+let id = 0;
+export default createReducer([], {
+    [ADD_TODO]: function (state, action) {
+        const newState = [...state, {
+            id: id++,
+            text: action.payload.text,
+            completed: false
+        }];
+        return assign([], newState);
+
+    },
+    [TOGGLE_TODO]: function (state, action) {
+        const newState = state.map(todo =>
+            (todo.id === action.payload.id)
+                ? {...todo, completed: !todo.completed}
+                : todo
+        );
+        return assign([], newState);
+    }
+});

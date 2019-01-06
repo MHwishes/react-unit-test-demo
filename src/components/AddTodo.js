@@ -8,7 +8,7 @@ class AddTodoView extends Component {
         if (e.keyCode === 13) {
             const node = e.target;
             const text = node.value && node.value.trim();
-            text && this.props.dispatch(addTodo(text));
+            text && this.props.addTodo({text});
             node.value = '';
         }
     };
@@ -27,4 +27,9 @@ class AddTodoView extends Component {
     }
 }
 
-export default connect()(AddTodoView)
+
+const mapDispatchToProps = {
+    addTodo
+};
+
+export default connect(null, mapDispatchToProps)(AddTodoView)
