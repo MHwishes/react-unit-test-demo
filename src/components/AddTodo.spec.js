@@ -19,6 +19,7 @@ describe('When input a new item', () => {
         };
         const store = mockStore(initialState);
         const wrapper = mount(<Todo store={store}/>);
+        expect(wrapper.find('.new-todo').exists()).toEqual(true);
         wrapper.find('.new-todo').simulate('keyup', mockEvent);
         expect(store.getActions()[0]).toEqual(
             {
