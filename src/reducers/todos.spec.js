@@ -7,7 +7,7 @@ describe('todos reducer', () => {
         expect(todoItems).toEqual([])
     });
 
-    it('should handle ADD_TODO state', () => {
+    it('should add todo-item in state', () => {
         const action = {
             type: ADD_TODO,
             payload: {
@@ -23,7 +23,7 @@ describe('todos reducer', () => {
         }])
     });
 
-    it('should handle TOGGLE_TODO state', () => {
+    it('should toggle todo in  state', () => {
         const action = {
             type: TOGGLE_TODO,
             payload: {

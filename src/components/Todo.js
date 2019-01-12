@@ -6,12 +6,14 @@ import {connect} from "react-redux";
 class Todo extends Component {
     render() {
         const {completed, text, id} = this.props;
+        console.log(completed,"eeeeeeee")
         return (
             <li
                 className={completed ? 'completed' : ''}
             >
                 <div className="view">
                     <input className="toggle" type="checkbox"
+                           disabled={completed}
                            onClick={() => this.props.toggleTodo({id})}/>
                     <label>{text}</label>
                 </div>
