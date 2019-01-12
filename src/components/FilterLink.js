@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import {setVisibilityFilter} from '../actions'
 import React, {Component} from "react";
+import {lowerCase} from 'lodash';
 
 class Link extends Component {
 
@@ -11,6 +12,7 @@ class Link extends Component {
             <button
                 onClick={() => this.props.setVisibilityFilter(filter)}
                 disabled={disabled}
+                className={lowerCase(children)}
                 style={{
                     marginLeft: '60px',
                     color: disabled ? '#36a1da' : 'black'

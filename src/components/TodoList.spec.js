@@ -1,21 +1,29 @@
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import TodoList from './TodoList'
-import toJson from "enzyme-to-json";
 import configMockStore from 'redux-mock-store';
 import React from 'react'
 
 const mockStore = configMockStore();
 import {visibilityFilters} from '../constant/constants'
 
-describe('shallow render TodoList component', () => {
-    it('render TodoList', () => {
+describe('When user finish this todo-item', () => {
+    it('should show item is marked as  completed', () => {
         const initialState = {
-            todos: [{id: 1, text: "I am a test Todo", completed: false}],
+            todos: [{id: 0, text: "I eat breakfast", completed: false},
+                {id: 1, text: "I eat lunch", completed: false}],
             visibilityFilter: visibilityFilters.SHOW_ALL
         };
         const store = mockStore(initialState);
-        const wrapper = shallow(
-            <TodoList store={store}/>);
-        expect(toJson(wrapper.dive())).toMatchSnapshot();
+        const wrapper = mount(<TodoList store={store}/>);
+        expect(wrapper.find('li').length).toEqual(2);
+        wrapper.find('li .toggle-0').simulate('click');
+        expect(store.getActions()[0]).toEqual(
+            {
+                "payload": {
+                    "id": 0,
+                },
+                "type": "TOGGLE_TODO"
+            }
+        );
     })
 });

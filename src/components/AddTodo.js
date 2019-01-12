@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {addTodo} from '../actions'
 import '../App.css'
 
-class AddTodoView extends Component {
+export class AddTodoView extends Component {
     handleClick = (e) => {
         if (e.keyCode === 13) {
             const node = e.target;
