@@ -1,5 +1,5 @@
 import React from "react";
-import {shallow,mount,render} from 'enzyme';
+import {shallow,mount} from 'enzyme';
 import Todo, {AddTodoView} from './AddTodo'
 import configMockStore from 'redux-mock-store';
 
@@ -12,7 +12,7 @@ const mockEvent = {
 
 // test component with action
 describe('When input a new item', () => {
-    it('should add the one new item in todoList', () => {
+    it('should add the one new item ', () => {
         const mockStore = configMockStore();
         const initialState = {
             todos: [{id: 1, text: "I am a test Todo", completed: false}],
@@ -33,15 +33,14 @@ describe('When input a new item', () => {
 });
 
 // only test for component
-// describe('When input a new item2', () => {
-//     it('should add the one new item in todoList', () => {
-//         const props = {
-//             addTodo: jest.fn()
-//         };
-//         const wrapper = mount(<AddTodoView {...props}/>);
-//         expect(wrapper.find('.new-todo').exists());
-//         wrapper.find('.new-todo').simulate('keyup', mockEvent);
-//         expect(props.addTodo).toBeCalled();
-//         expect(mockEvent.target.value).toEqual('')
-//     });
-// });
+describe('When input a new item', () => {
+    it('should add the one new item ', () => {
+        const props = {
+            addTodo: jest.fn(e=>{})
+        };
+        const wrapper = shallow(<AddTodoView {...props}/>);
+        expect(wrapper.find('.new-todo').exists()).toEqual(true);
+        wrapper.find('.new-todo').simulate('keyup', mockEvent);
+        expect(mockEvent.target.value).toEqual('')
+    });
+});
