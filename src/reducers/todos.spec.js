@@ -22,5 +22,7 @@ describe('todos reducer', () => {
             completed: false
         }])
     });
+
+    //Todo: Here please write a test  about AC2
 });
 

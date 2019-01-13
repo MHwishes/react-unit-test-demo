@@ -1,4 +1,4 @@
-import {mount, shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import FilterLink from './FilterLink'
 import configMockStore from 'redux-mock-store';
 import React from 'react'
@@ -40,19 +40,5 @@ describe('When user click footer button', () => {
         );
     });
 
-
-    it('should show all items when click active button', () => {
-        const store = mockStore(initialState);
-        const props = {
-            active: 'SHOW_ALL',
-            children: 'Active',
-            filter: 'SHOW_ACTIVE'
-        };
-        const wrapper = mount(<FilterLink store={store} {...props}/>);
-        expect(wrapper.find('.active').exists()).toEqual(true);
-        wrapper.find('.active').simulate('click');
-        expect(store.getActions()).toEqual(
-            [{"payload": "SHOW_ACTIVE", "type": "SET_VISIBILITY_FILTER"}]
-        );
-    });
+    //TODO: Here please write a test  about AC5
 });
