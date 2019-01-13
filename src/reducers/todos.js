@@ -16,7 +16,7 @@ export default createReducer([], {
     [TOGGLE_TODO]: function (state, action) {
         const newState = state.map(todo =>
             (todo.id === action.payload.id)
-                ? {...todo, completed: !todo.completed}
+                ? {...todo, completed: true}
                 : todo
         );
         return assign([], newState);

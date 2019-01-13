@@ -1,20 +1,26 @@
 import {connect} from 'react-redux'
-import Todo from "./Todo";
+import {toggleTodo} from "../actions";
 import PropTypes from "prop-types";
 import React, {Component} from "react";
 import {visibilityFilters} from '../constant/constants'
 
-class TodoList extends Component {
+export class TodoList extends Component {
 
     render() {
         const {todos} = this.props;
         return (
             <ul className="todo-list">
                 {todos.map(todo =>
-                    <Todo
-                        key={todo.id}
-                        {...todo}
-                    />
+                    <li key={todo.id}
+                        className={todo.completed ? 'completed' : ''}
+                    >
+                        <div className="view">
+                            <input className={"toggle"+" toggle-"+todo.id} type="checkbox"
+                                   disabled={todo.completed}
+                                   onClick={() => this.props.toggleTodo({id: todo.id})}/>
+                            <label>{todo.text}</label>
+                        </div>
+                    </li>
                 )}
             </ul>
         )
@@ -47,7 +53,8 @@ const mapStateToProps = state => ({
     todos: getVisibleTodos(state.todos, state.visibilityFilter)
 });
 
-export default connect(
-    mapStateToProps,
-    null
-)(TodoList)
+const mapDispatchToProps = {
+    toggleTodo
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
