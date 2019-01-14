@@ -5,12 +5,12 @@ import {visibilityFilters} from '../constant/constants'
 const initialState=visibilityFilters.SHOW_ALL;
 
 describe('visibilityFilter reducer', () => {
-    it('should show all items  when ', () => {
+    it('should show initial visibilityFilter `SHOW_ALL`', () => {
         const visibilityFilterState = visibilityFilter(initialState, {});
         expect(visibilityFilterState).toEqual(visibilityFilters.SHOW_ALL)
     });
 
-    it('should add todo-item in state', () => {
+    it('should click completed button and change visibilityFilter to `SHOW_COMPLETED`', () => {
         const action = {
             type: SET_VISIBILITY_FILTER,
             payload:visibilityFilters.SHOW_COMPLETED
@@ -19,7 +19,7 @@ describe('visibilityFilter reducer', () => {
         expect(visibilityFilterState).toEqual(visibilityFilters.SHOW_COMPLETED)
     });
 
-    it('should toggle todo in  state', () => {
+    it('should toggle todo and change visibilityFilter to `SHOW_ACTIVE`', () => {
         const action = {
             type: SET_VISIBILITY_FILTER,
             payload:visibilityFilters.SHOW_ACTIVE
