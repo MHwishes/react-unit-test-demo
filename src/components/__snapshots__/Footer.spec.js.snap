@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Footer/> render TodoList footer 1`] = `
+<footer
+  className="footer"
+>
+  <ul
+    className="filters"
+  >
+    <li>
+      <Connect(Link)
+        filter="SHOW_ALL"
+      >
+        All
+      </Connect(Link)>
+    </li>
+    <li>
+      <Connect(Link)
+        filter="SHOW_COMPLETED"
+      >
+        Completed
+      </Connect(Link)>
+    </li>
+    <li>
+      <Connect(Link)
+        filter="SHOW_ACTIVE"
+      >
+        Active
+      </Connect(Link)>
+    </li>
+  </ul>
+</footer>
+`;
+
 exports[`shallow render todoList Footer component render TodoList footer 1`] = `
 <footer
   className="footer"

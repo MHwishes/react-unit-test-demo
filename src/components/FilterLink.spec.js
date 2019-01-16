@@ -13,7 +13,7 @@ const initialState = {
     ],
     visibilityFilter: visibilityFilters.SHOW_ALL
 };
-describe('When user click footer button', () => {
+describe('<FilterLink>', () => {
     it('should show all items when click `all` button', () => {
         const store = mockStore(initialState);
         const props = {
@@ -26,6 +26,7 @@ describe('When user click footer button', () => {
     });
 
     it('should show all items when click `completed` button', () => {
+        //Given
         const store = mockStore(initialState);
         const props = {
             active: 'SHOW_ALL',
@@ -33,8 +34,9 @@ describe('When user click footer button', () => {
             filter: 'SHOW_COMPLETED'
         };
         const wrapper = mount(<FilterLink store={store} {...props}/>);
-        expect(wrapper.find('.completed').exists()).toEqual(true);
+        //When
         wrapper.find('.completed').simulate('click');
+        //Then
         expect(store.getActions()).toEqual(
             [{"payload": "SHOW_COMPLETED", "type": "SET_VISIBILITY_FILTER"}]
         );
@@ -42,6 +44,7 @@ describe('When user click footer button', () => {
 
 
     it('should show all items when click `active` button', () => {
+        //Given
         const store = mockStore(initialState);
         const props = {
             active: 'SHOW_ALL',
@@ -50,7 +53,9 @@ describe('When user click footer button', () => {
         };
         const wrapper = mount(<FilterLink store={store} {...props}/>);
         expect(wrapper.find('.active').exists()).toEqual(true);
+        //When
         wrapper.find('.active').simulate('click');
+        //Then
         expect(store.getActions()).toEqual(
             [{"payload": "SHOW_ACTIVE", "type": "SET_VISIBILITY_FILTER"}]
         );

@@ -11,16 +11,20 @@ const mockEvent = {
 };
 
 // test component with action
-describe('When input a new item', () => {
+describe('<AddTodo/>', () => {
+    //AC1
     it('should add the one new item ', () => {
+        //Given
         const mockStore = configMockStore();
         const initialState = {
             todos: [{id: 1, text: "I am a test Todo", completed: false}],
         };
         const store = mockStore(initialState);
         const wrapper = mount(<Todo store={store}/>);
-        expect(wrapper.find('.new-todo').exists()).toEqual(true);
+        //when
         wrapper.find('.new-todo').simulate('keyup', mockEvent);
+        //Then
+        expect(mockEvent.target.value).toEqual('');
         expect(store.getActions()[0]).toEqual(
             {
                 "payload": {
@@ -33,7 +37,7 @@ describe('When input a new item', () => {
 });
 
 // only test for component
-describe('When input a new item', () => {
+describe('<AddTodo/>2', () => {
     it('should add the one new item ', () => {
         const props = {
             addTodo: jest.fn(e=>{})
