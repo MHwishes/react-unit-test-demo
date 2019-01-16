@@ -6,7 +6,10 @@ import React from 'react'
 const mockStore = configMockStore();
 import {visibilityFilters} from '../constant/constants'
 
-describe('When user see the todo-list', () => {
+describe('<TodoList/>', () => {
+    //Todo: Here please write a test  about AC2
+
+    //AC3
     it('should show all items', () => {
         const initialState = {
             todos: [{id: 0, text: "I eat breakfast", completed: true},
@@ -15,9 +18,11 @@ describe('When user see the todo-list', () => {
         };
         const store = mockStore(initialState);
         const wrapper = mount(<TodoList store={store}/>);
+
         expect(wrapper.find('li').length).toEqual(2);
     });
 
+    //AC4
     it('should show completed items', () => {
         const initialState = {
             todos: [{id: 0, text: "I eat breakfast", completed: true},
@@ -26,6 +31,7 @@ describe('When user see the todo-list', () => {
         };
         const store = mockStore(initialState);
         const wrapper = mount(<TodoList store={store}/>);
+
         expect(wrapper.find('li').length).toEqual(1);
         expect(wrapper.find('label').text()).toEqual('I eat breakfast');
     });
@@ -33,5 +39,3 @@ describe('When user see the todo-list', () => {
     //TODO: Here please write a test about AC5
 });
 
-
-//Todo: Here please write a test  about AC2

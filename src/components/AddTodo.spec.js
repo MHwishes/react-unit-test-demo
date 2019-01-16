@@ -10,16 +10,19 @@ const mockEvent = {
     }
 };
 
-describe('When input a new item', () => {
+describe('<AddTodo/>', () => {
+   //AC1
     it('should add the one new item in todoList', () => {
+        //Given
         const mockStore = configMockStore();
         const initialState = {
             todos: [{id: 1, text: "I am a test Todo", completed: false}],
         };
         const store = mockStore(initialState);
         const wrapper = mount(<Todo store={store}/>);
-        expect(wrapper.find('.new-todo').exists()).toEqual(true);
+        //When
         wrapper.find('.new-todo').simulate('keyup', mockEvent);
+        //Then
         expect(store.getActions()[0]).toEqual(
             {
                 "payload": {
